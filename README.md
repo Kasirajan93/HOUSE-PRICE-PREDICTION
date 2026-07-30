@@ -28,8 +28,6 @@ Built with **Python**, **Scikit-learn**, and **Streamlit**.
 
 ## 📌 Project Overview
 
-## 📌 Project Overview
-
 This project predicts the selling price of a house using a trained Random Forest Regression model.
 
 Users can enter various house characteristics such as:

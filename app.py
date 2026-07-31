@@ -491,17 +491,32 @@ if predict_button:
     # Scale
     scaled_data = scaler.transform(processed_df)
 
-    
-    
-
     # Prediction
     prediction = model.predict(scaled_data)[0]
 
     st.success("Prediction completed successfully!")
 
+    # Display Prediction in USD
     st.metric(
-        label="Estimated House Price",
+        label="🏡 Estimated House Price (USD)",
         value=f"${prediction:,.0f}"
+    )
+
+    # Approximate INR Conversion
+    USD_TO_INR = 95.36  # Approximate exchange rate
+
+    prediction_inr = prediction * USD_TO_INR
+
+    st.metric(
+        label="🇮🇳 Approximate House Price (INR)",
+        value=f"₹{prediction_inr:,.0f}"
+    )
+
+    st.caption(
+        "Note: This model is trained on the Ames Housing Dataset (USA). "
+        "The predicted price is generated in USD. "
+        "INR value is an approximate conversion using an exchange rate of "
+         "1 USD = ₹95.36. Exchange rates may vary over time."
     )
 
 
